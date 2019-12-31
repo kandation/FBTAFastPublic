@@ -1,0 +1,2 @@
+class FBTABrwoserDetector():
+    pass
