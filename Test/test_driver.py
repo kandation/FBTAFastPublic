@@ -5,8 +5,8 @@ from fbtapack.driver.fbta_driver import FBTADriver
 
 class TestDriver(unittest.TestCase):
     def test_crate(self):
-        driver = FBTADriver()
-        self.assertEqual(driver.connect(), 'Connect')
+        FBTADriver()
+
 
 
 if __name__ == '__main__':
