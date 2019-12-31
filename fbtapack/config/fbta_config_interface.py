@@ -241,14 +241,14 @@ class FBTAConfigInterface:
     def test_step(self, step=None):
         if step is None:
             self.__test_step = []
-        elif type(step) == list:
+        elif isinstance(step, list):
             print(FBTALang.SETTING_STEP_TEST_CURRENT.format(step=step))
             self.__test_step = step
         else:
             raise ValueError(FBTALang.SETTING_ERROR_TEST_STEP_SHOULD_NOT_NONE)
 
     @property
-    def path_password(self)->str:
+    def path_password(self) -> str:
         return self.__file_password
 
     @path_password.setter
@@ -264,17 +264,12 @@ class FBTAConfigInterface:
         return data
 
     @staticmethod
-    def __check_password_file(file=None, defualt_file=r'./password.text'):
+    def __check_password_file(file=None):
         import os
-        if not file:
-            if not os.path.exists(defualt_file):
-                raise FileNotFoundError(
-                    FBTALang.SETTING_ERROR_FILE_PASSWORD_NOT_FOUND.format(file=defualt_file))
-
-            return defualt_file
-        else:
-            if not os.path.exists(file):
-                raise FileNotFoundError(FBTALang.SETTING_ERROR_FILE_PASSWORD_NOT_FOUND.format(file=file))
+        default_file = r'./password.text'
+        new_file_path = default_file if not file else file
+        if not os.path.exists(new_file_path):
+            raise FileNotFoundError(FBTALang.SETTING_ERROR_FILE_PD_NOT_FOUND.format(file=file))
         return file
 
     @property
