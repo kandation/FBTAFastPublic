@@ -1,6 +1,4 @@
-import io
 import unittest
-import unittest.mock
 
 from fbtapack.config.fbta_config import FBTAConfig
 from fbtapack.language.fbta_lang import FBTALang
