@@ -1,4 +1,8 @@
 class FBTALang:
+    SETTING_ERROR_DIR_PD = ':Settings: Password KEY file path is empty'
+    SETTING_ERROR_DIR_CHORME = ':Settings: Chrome Driver Path Not Correct'
+    SETTING_ERROR_DIR_PATH_NOT_IN_LIST = ':Settings: Directory Level Not Correct'
+    SETTING_ERROR_DB_NAME_MUST_NOT_EMPTY = ':Settings: Database name MUST not empty'
     SETTING_ERROR_TEST_STEP_SHOULD_NOT_NONE = ':Settings: TestStep Value is not NONE or LIST'
     SETTING_ERROR_FILE_PD_NOT_FOUND = ':Settings: {file} not found'
     SETTING_ERROR_DATE_DAY_NOT_CORRECT = ':Settings: DateProcess "Day" is not format but auto edited'
