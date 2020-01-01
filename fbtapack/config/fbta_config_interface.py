@@ -85,7 +85,7 @@ class FBTAConfigInterface:
     @db_name.setter
     def db_name(self, name):
         if name == '':
-            raise ValueError(':Settings: Database name MUST not empty')
+            raise ValueError(FBTALang.SETTING_ERROR_DB_NAME_MUST_NOT_EMPTY)
         elif name is None:
             self.__init_db_name()
         else:
@@ -94,7 +94,7 @@ class FBTAConfigInterface:
     def __get_db_name(self):
         if not self.__db_name:
             self.__is_auto_db_name = True
-            return self.db_prefix + '_' + self.__db_name
+            return f'{self.db_prefix}_{self.__db_name}'
         return self.__db_name
 
     def _auto_init(self):
@@ -104,7 +104,7 @@ class FBTAConfigInterface:
     def __init_db_name(self):
         _dir_db_str = '%Y%m%d_%H%M'
         now_db = datetime.datetime.now().strftime(_dir_db_str)
-        self.db_name = self.db_prefix + '_' + str(now_db)
+        self.db_name = f'{self.db_prefix}_{str(now_db)}'
 
     @property
     def renew_index(self):
@@ -130,7 +130,7 @@ class FBTAConfigInterface:
             _dir_dir_str = '%Y%m%d_%H%M'
 
         now_dir = datetime.datetime.now().strftime(_dir_dir_str)
-        now_dir = self.dir_save_path + 'save_' + now_dir
+        now_dir = f'{self.dir_save_path}save_{now_dir}'
 
         self.__dir_path = now_dir
 
@@ -154,7 +154,7 @@ class FBTAConfigInterface:
         if not dir:
             self.__dir_save_path = './'
         else:
-            self.__dir_save_path = dir[:-1] + '/' if dir[-1] != '/' else dir
+            self.__dir_save_path = f'{dir[:-1]}/' if dir[-1] != '/' else dir
 
     @property
     def dir_path_detail(self):
@@ -164,7 +164,7 @@ class FBTAConfigInterface:
     def dir_path_detail(self, level):
         cond = [FBTAConfigConstant.DIR_DETAIL_NEW_ON_DAY, FBTAConfigConstant.DIR_DETAIL_NEW_ALL_RUN]
         if level not in cond:
-            raise ValueError(':Settings: Directory Level Not Correct')
+            raise ValueError(FBTALang.SETTING_ERROR_DIR_PATH_NOT_IN_LIST)
         self.__dir_path_detail = level
         self.__init_dir_path_name()
 
@@ -175,7 +175,7 @@ class FBTAConfigInterface:
     @driver_path.setter
     def driver_path(self, m_dir='./'):
         if not m_dir:
-            raise ValueError(':Settings: Chrome Driver Path Not Correct')
+            raise ValueError(FBTALang.SETTING_ERROR_DIR_CHORME)
         self.__driver_path = m_dir[:-1] if m_dir[-1] == '/' else m_dir
 
     @property
@@ -254,8 +254,8 @@ class FBTAConfigInterface:
     @path_password.setter
     def path_password(self, file):
         if not file:
-            ValueError(':Settings: Password KEY file path is empty')
-        self.__file_password = self.__check_password_file(file, defualt_file=r'./password.text')
+            ValueError(FBTALang.SETTING_ERROR_DIR_PD)
+        self.__file_password = self.__check_password_file(file)
 
     @property
     def password(self):
