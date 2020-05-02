@@ -1,0 +1,1 @@
+from fbtapack import Browser

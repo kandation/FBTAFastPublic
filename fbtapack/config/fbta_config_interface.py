@@ -175,7 +175,7 @@ class FBTAConfigInterface:
     @driver_path.setter
     def driver_path(self, m_dir='./'):
         if not m_dir:
-            raise ValueError(FBTALang.SETTING_ERROR_DIR_CHORME)
+            raise ValueError(FBTALang.SETTING_ERROR_DIR_CHROME)
         self.__driver_path = m_dir[:-1] if m_dir[-1] == '/' else m_dir
 
     @property
@@ -215,7 +215,10 @@ class FBTAConfigInterface:
     def __date_process_claim(val, v_min, v_max, cond, error, auto=False):
         if cond or auto:
             m_val = int(val)
-            ret = v_min if m_val <= v_min else v_max if m_val > v_max else m_val
+
+            # claim v_val between v_min <= v_val <= v_max
+            ret = min(max(m_val, v_min), v_max)
+
             return ret
         if not cond and auto:
             print(error)
