@@ -1,6 +1,8 @@
 class FBTALang:
+    DRIVER_ERROR_COOKIE_PATH_SET = ':Driver: Cookie Path Not Correct'
+    DRIVER_ERROR_COOKIE_PATH = ':Driver: Cookie Path Not Init'
     SETTING_ERROR_DIR_PD = ':Settings: Password KEY file path is empty'
-    SETTING_ERROR_DIR_CHORME = ':Settings: Chrome Driver Path Not Correct'
+    SETTING_ERROR_DIR_CHROME = ':Settings: Chrome Driver Path Not Correct'
     SETTING_ERROR_DIR_PATH_NOT_IN_LIST = ':Settings: Directory Level Not Correct'
     SETTING_ERROR_DB_NAME_MUST_NOT_EMPTY = ':Settings: Database name MUST not empty'
     SETTING_ERROR_TEST_STEP_SHOULD_NOT_NONE = ':Settings: TestStep Value is not NONE or LIST'
